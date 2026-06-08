@@ -167,7 +167,7 @@ export function Hero() {
           transition={{ delay: 1.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-wrap gap-4"
         >
-          <a href="#projects" className="btn-gold">
+          <a href="https://drive.google.com/drive/folders/1AoHxXAxEtfGYE6hRFF-TVazn-HujhtBl" target="_blank" rel="noopener noreferrer" className="btn-gold">
             <span>View My Reel</span>
           </a>
           <a href="#contact" className="btn-ghost">

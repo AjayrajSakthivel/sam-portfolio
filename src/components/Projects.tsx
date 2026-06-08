@@ -12,7 +12,7 @@ type Project = {
   badges: string[];
   tags: string[];
   accent: string; // gradient
-  driveLink?: string;
+  driveLink: string;
 };
 
 const PROJECTS: Project[] = [
@@ -34,7 +34,7 @@ const PROJECTS: Project[] = [
     badges: ["Creative Director", "Commercial Ad"],
     tags: ["#Advertisement", "#Commercial", "#CreativeDirection", "#MayilonMediaWorks"],
     accent: "from-amber-600/20 via-yellow-800/10 to-bg-primary",
-    driveLink: "https://drive.google.com/drive/folders/1AoHxXAxEtfGYE6hRFF-TVazn-HujhtBl?usp=drive_link",
+    driveLink: "https://drive.google.com/drive/folders/1AoHxXAxEtfGYE6hRFF-TVazn-HujhtBl",
   },
   {
     no: "02",
@@ -52,6 +52,7 @@ const PROJECTS: Project[] = [
     badges: ["Writer", "Director"],
     tags: ["#PilotFilm", "#OriginalScreenplay", "#TamilCinema", "#Direction"],
     accent: "from-amber-500/20 via-orange-700/10 to-bg-primary",
+    driveLink: "https://drive.google.com/drive/folders/1AoHxXAxEtfGYE6hRFF-TVazn-HujhtBl",
   },
   {
     no: "03",
@@ -69,6 +70,7 @@ const PROJECTS: Project[] = [
     badges: ["Editor"],
     tags: ["#Documentary", "#TamilNadu", "#Editing", "#Storytelling"],
     accent: "from-stone-500/20 via-zinc-700/10 to-bg-primary",
+    driveLink: "https://drive.google.com/drive/folders/1AoHxXAxEtfGYE6hRFF-TVazn-HujhtBl",
   },
   {
     no: "04",
@@ -86,6 +88,7 @@ const PROJECTS: Project[] = [
     badges: ["Editor"],
     tags: ["#ShortFilm", "#Editing", "#PostProduction", "#TamilFilm"],
     accent: "from-rose-900/20 via-red-900/10 to-bg-primary",
+    driveLink: "https://drive.google.com/drive/folders/1AoHxXAxEtfGYE6hRFF-TVazn-HujhtBl",
   },
   {
     no: "05",
@@ -103,6 +106,7 @@ const PROJECTS: Project[] = [
     badges: ["Cinematographer", "Editor"],
     tags: ["#Cinematography", "#Editing", "#PilotFilm", "#VisualStorytelling"],
     accent: "from-amber-700/25 via-yellow-900/10 to-bg-primary",
+    driveLink: "https://drive.google.com/drive/folders/1AoHxXAxEtfGYE6hRFF-TVazn-HujhtBl",
   },
 ];
 
@@ -120,13 +124,16 @@ export function Projects() {
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {PROJECTS.map((p, i) => (
-            <motion.article
+            <motion.a
+              href={p.driveLink}
+              target="_blank"
+              rel="noopener noreferrer"
               key={p.title}
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
-              className={`group relative card-cinema overflow-hidden ${i % 3 === 0 ? "md:row-span-2" : ""}`}
+              className={`group relative card-cinema overflow-hidden block ${i % 3 === 0 ? "md:row-span-2" : ""}`}
             >
               {/* Poster zone */}
               <div className={`relative aspect-[16/10] ${i % 3 === 0 ? "md:aspect-[4/5]" : ""} overflow-hidden`}>
@@ -187,18 +194,15 @@ export function Projects() {
                   {p.tags.join("  ")}
                 </div>
                 {p.driveLink && (
-                  <a
-                    href={p.driveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <div
                     className="mt-4 inline-flex items-center gap-2 font-mono-c text-[11px] tracking-cinema uppercase text-gold border border-gold px-4 py-2 hover:bg-gold hover:text-bg-primary transition-all"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     View Project
-                  </a>
+                  </div>
                 )}
               </div>
-            </motion.article>
+            </motion.a>
           ))}
         </div>
       </div>
